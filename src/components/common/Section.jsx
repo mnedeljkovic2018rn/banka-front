@@ -1,19 +1,17 @@
 import PropTypes from "prop-types";
-import Button from "./Button";
-import TextField from "./TextField";
+import Button, { BUTTON_DESIGN } from "./Button";
 import classNames from "classnames";
 
 function Section(props) {
 
     const fieldClasses = classNames(
-        "pt-8 pl-12 pr-12"
+        "pt-4 pl-12 pr-12 pb-4 flex flex-row"
     )
 
     const formWrapperClasses = classNames(
         "box-border",
         "h-full w-[500px]",
-        "border-1",
-        "bg-gray-50"
+        "border-4",
     )
 
     const tittleClasses = classNames(
@@ -34,7 +32,11 @@ function Section(props) {
         
         if(props.fields)
             props.fields.map(item => {
-                fields.push(<p className={fieldClasses}><text>{item[0]}  </text><text> {item[1]} </text><Button label="izmeni" /></p>)
+                fields.push(<div className={fieldClasses}>
+                                <div className="inline basis-1/3">{item[0]}  </div>
+                                <div className="inline basis-1/3"> {item[1]} </div>
+                                <Button label="izmeni" design={BUTTON_DESIGN.INLINE} className = 'basis-1/3' />
+                            </div>)
             })
         return fields
         
